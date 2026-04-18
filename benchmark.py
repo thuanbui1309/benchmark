@@ -13,10 +13,15 @@ Usage:
 
 import argparse
 import json
+import os
 import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
+# Disable SDPA to prevent segfault on ARM (Pi 4)
+os.environ.setdefault("PYTORCH_ENABLE_FLASH_SDP", "0")
+os.environ.setdefault("PYTORCH_ENABLE_MEM_EFFICIENT_SDP", "0")
 
 import torch
 import yaml
