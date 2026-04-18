@@ -1,0 +1,27 @@
+{
+  "deeplog": {
+    "model": "deeplog",
+    "type": "ANN",
+    "arch": "LSTM",
+    "timing": {
+      "params": 390956,
+      "n_inferences": 5,
+      "duration_s": 0.007,
+      "ms_per_inference": 1.461
+    },
+    "usb_metrics": {
+      "wh": 10.0,
+      "w": 10.0,
+      "usb_time_s": 10.0,
+      "v": 10.0,
+      "a": 10.0,
+      "temp_c": 10.0
+    },
+    "derived": {
+      "energy_total_j": 36000.0,
+      "energy_per_inference_j": 7200.0,
+      "energy_per_inference_uj": 7200000000.0
+    },
+    "timestamp": "2026-04-18T14:04:18.672993"
+  }
+}

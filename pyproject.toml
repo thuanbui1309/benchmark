@@ -1,0 +1,21 @@
+[project]
+name = "spikelog-benchmark"
+version = "0.1.0"
+description = "Energy benchmark for SpikeLog-v2 vs baselines"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "numpy",
+    "pyyaml",
+    "tqdm",
+    "tabulate",
+    "spikingjelly>=0.0.0.0.14",
+]
+
+[project.optional-dependencies]
+snn = ["spikingjelly>=0.0.0.0.14"]
+lava = ["lava-nc>=0.9"]
+profile = ["thop", "psutil"]
+
+[dependency-groups]
+dev = []

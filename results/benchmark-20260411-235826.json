@@ -1,0 +1,116 @@
+{
+  "timestamp": "20260411-235826",
+  "device": "cpu",
+  "input_shape": [
+    1,
+    100,
+    300
+  ],
+  "n_runs": 100,
+  "results": [
+    {
+      "model": "deeplog",
+      "type": "ANN",
+      "arch": "LSTM",
+      "params": 390956,
+      "flops": 95334400,
+      "latency_ms": 3.226,
+      "throughput": 310.0,
+      "memory_mb": 1.49,
+      "energy_uj": 438.5382,
+      "energy_ratio": 1.0,
+      "firing_rate": null
+    },
+    {
+      "model": "loganomaly",
+      "type": "ANN",
+      "arch": "2\u00d7LSTM",
+      "params": 781612,
+      "flops": 190668800,
+      "latency_ms": 7.129,
+      "throughput": 140.3,
+      "memory_mb": 2.98,
+      "energy_uj": 877.0765,
+      "energy_ratio": 1.0,
+      "firing_rate": null
+    },
+    {
+      "model": "logrobust",
+      "type": "ANN",
+      "arch": "BiLSTM+Attn",
+      "params": 934530,
+      "flops": 195020800,
+      "latency_ms": 4.596,
+      "throughput": 217.6,
+      "memory_mb": 3.56,
+      "energy_uj": 897.0957,
+      "energy_ratio": 1.0,
+      "firing_rate": null
+    },
+    {
+      "model": "logcnn",
+      "type": "ANN",
+      "arch": "TextCNN",
+      "params": 461954,
+      "flops": 89395200,
+      "latency_ms": 2.199,
+      "throughput": 454.7,
+      "memory_mb": 1.76,
+      "energy_uj": 411.2179,
+      "energy_ratio": 1.0,
+      "firing_rate": null
+    },
+    {
+      "model": "neurallog",
+      "type": "ANN",
+      "arch": "Transformer",
+      "params": 1093598,
+      "flops": 247932800,
+      "latency_ms": 3.128,
+      "throughput": 319.7,
+      "memory_mb": 4.17,
+      "energy_uj": 1140.4909,
+      "energy_ratio": 1.0,
+      "firing_rate": null
+    },
+    {
+      "model": "plelog",
+      "type": "ANN",
+      "arch": "BiGRU+Attn",
+      "params": 693250,
+      "flops": 144691200,
+      "latency_ms": 14.454,
+      "throughput": 69.2,
+      "memory_mb": 2.64,
+      "energy_uj": 665.5795,
+      "energy_ratio": 1.0,
+      "firing_rate": null
+    },
+    {
+      "model": "spikelog",
+      "type": "SNN",
+      "arch": "RLeaky+LSTM",
+      "params": 129985,
+      "flops": 25728000,
+      "latency_ms": 32.491,
+      "throughput": 30.8,
+      "memory_mb": 0.5,
+      "energy_uj": 0.0,
+      "energy_ratio": 2605261.7,
+      "firing_rate": 0.0006
+    },
+    {
+      "model": "spikelog_v2",
+      "type": "SNN",
+      "arch": "SDSA+BSPN",
+      "params": 434305,
+      "flops": 86374400,
+      "latency_ms": 3.158,
+      "throughput": 316.6,
+      "memory_mb": 1.66,
+      "energy_uj": 0.036,
+      "energy_ratio": 1963.2,
+      "firing_rate": 0.0255
+    }
+  ]
+}

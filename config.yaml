@@ -1,0 +1,64 @@
+# Benchmark configuration
+# Input shape: (batch, seq_len, embed_dim)
+
+input:
+  batch_size: 1
+  seq_len: 100
+  embed_dim: 300
+
+benchmark:
+  n_warmup: 10
+  n_runs: 100
+  device: cpu  # cpu for Pi, cuda for GPU
+
+# Model hyperparameters (matching reference implementations)
+models:
+  deeplog:
+    hidden_size: 128
+    num_layers: 2
+    vocab_size: 300  # output dim for next-event prediction
+
+  loganomaly:
+    hidden_size: 128
+    num_layers: 2
+    vocab_size: 300
+
+  logrobust:
+    hidden_size: 128
+    num_layers: 2
+
+  logcnn:
+    out_channels: 128
+    kernel_sizes: [3, 4, 5]
+
+  neurallog:
+    dim_model: 300
+    num_heads: 6
+    num_layers: 1
+    dim_feedforward: 1200
+
+  plelog:
+    hidden_size: 128
+    num_layers: 2
+
+  spikelog:
+    hidden_size: 128
+    num_out: 64
+
+  spikelog_v2:
+    hidden: 128
+    layers: 2
+    attn_heads: 4
+    keep_ratio: 0.6
+
+# Energy constants (pJ per operation)
+energy:
+  # Loihi 2 specs
+  loihi2:
+    sop: 0.052      # synaptic operation
+    neuron: 0.081   # neuron update per timestep
+    routing: 0.025  # spike routing
+  # 45nm CMOS baseline
+  cmos_45nm:
+    fma: 4.6        # fused multiply-add
+    add: 0.9        # addition only
