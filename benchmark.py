@@ -357,7 +357,7 @@ def run_usb_benchmark(args, config: dict):
     print(f"  USB POWER METER BENCHMARK")
     print(f"  Models: {total} | Inferences: {n_inf} | Mode: {'TEST' if args.test else 'FULL'}")
     print(f"  Input: ({input_cfg['batch_size']}, {input_cfg['seq_len']}, {input_cfg['embed_dim']})")
-    print(f"{'=' * 60}")
+    print(f"{'=' * 60}", flush=True)
 
     for idx, name in enumerate(model_names, 1):
         model_cls, model_type, arch = MODEL_REGISTRY[name]
@@ -372,12 +372,25 @@ def run_usb_benchmark(args, config: dict):
         print(f"  NEXT: [{idx}/{total}] {name} ({arch})")
         print(f"{'*' * 60}")
         print(f"\n  ➤ Reset USB meter (triple-press to zero Wh)")
-        print(f"  ➤ Press Enter when ready to start...")
+        print(f"  ➤ Press Enter when ready to start...", flush=True)
         input()
 
         # Create model and run
-        model = create_model(name, config).to(device)
-        timing = _run_usb_inference(name, model, x, n_inf)
+        try:
+            model = create_model(name, config).to(device)
+        except Exception as e:
+            print(f"\n  ✗ Failed to create {name}: {e}")
+            print(f"  Skipping to next model...")
+            continue
+
+        try:
+            timing = _run_usb_inference(name, model, x, n_inf)
+        except Exception as e:
+            print(f"\n  ✗ Inference failed for {name}: {e}")
+            import traceback
+            traceback.print_exc()
+            print(f"  Skipping to next model...")
+            continue
 
         # Collect USB readings
         print(f"\n  ➤ Now read your USB meter values:")
